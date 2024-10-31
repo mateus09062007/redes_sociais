@@ -1,4 +1,6 @@
-import { getCSS } from "./common.js";
+import { criarGrafico, getCSS, tickConfig } from "./common.js"
+
+
 
 
 async function quantidadeUsuariosPorRede() {
@@ -7,6 +9,8 @@ async function quantidadeUsuariosPorRede() {
     const dados = await res.json()
     const nomeDasRedes = Object.keys(dados)
     const quantidadeDeUsuarios = Object.values(dados)
+
+
 
 
     const data = [
@@ -19,6 +23,8 @@ async function quantidadeUsuariosPorRede() {
             }
         }
     ]
+
+
 
 
     const layout = {
@@ -54,11 +60,12 @@ async function quantidadeUsuariosPorRede() {
     }
 
 
-    const grafico = document.createElement('div')
-    grafico.className = 'grafico'
-    document.getElementById('graficos-container').appendChild(grafico)
-    Plotly.newPlot(grafico, data, layout)
+
+
+    criarGrafico(data, layout)
 }
+
+
 
 
 quantidadeUsuariosPorRede()
